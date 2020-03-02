@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://www.github.com/pedro-de-rycker/Facebook.NetCore.Service</PackageProjectUrl>
+    <Authors>Pedro De Rycker</Authors>
   </PropertyGroup>
 
   <ItemGroup>
