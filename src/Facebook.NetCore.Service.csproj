@@ -11,7 +11,7 @@
     <PackageIcon>nuget-package-logo.png</PackageIcon>
     <PackageIconUrl />
     <Description>A API service to use Facebook Graph API.</Description>
-    <Version>0.1.1</Version>
+    <Version>0.1.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\Assets\nuget-package-logo.png">
+    <None Include="..\..\Assets\nuget-package-logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
