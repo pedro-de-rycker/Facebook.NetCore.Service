@@ -7,10 +7,20 @@ using System.Text.Json.Serialization;
 namespace Facebook.NetCore.Service.Models
 {
     [DataContract]
-    public class Content<T>
+    public class ListContent<T>
     {
         [JsonPropertyName("data")]
         public List<T> Data { get; set; }
+
+        [JsonPropertyName("paging")]
+        public Paging Paging { get; set; }
+    }
+
+    [DataContract]
+    public class Content<T>
+    {
+        [JsonPropertyName("data")]
+        public T Data { get; set; }
 
         [JsonPropertyName("paging")]
         public Paging Paging { get; set; }

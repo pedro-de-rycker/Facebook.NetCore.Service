@@ -25,7 +25,7 @@ namespace Facebook.NetCore.Service.Services.PageService
             if(string.IsNullOrWhiteSpace(userId)) { throw new ArgumentNullException(nameof(userId)); }
             if(string.IsNullOrWhiteSpace(userAccessToken)) { throw new ArgumentNullException(nameof(userAccessToken)); }
 
-            var response = await _facebookHttpClient.GetContentAsync<Content<Page>>(
+            var response = await _facebookHttpClient.GetContentAsync<ListContent<Page>>(
                 userAccessToken,
                 string.Format("{0}/accounts",
                 userId));
@@ -50,9 +50,32 @@ namespace Facebook.NetCore.Service.Services.PageService
                 { "period", period }
             };
 
-            var response = await _facebookHttpClient.GetContentAsync<Content<Metric>>(
+            var response = await _facebookHttpClient.GetContentAsync<ListContent<Metric>>(
                 pageAccessToken,
                 string.Format("{0}/insights",
+                pageId),
+                args);
+
+            return response.Content.Data;
+        }
+
+        public async Task<PageInfos> GetPageInformation(
+            string fields,
+            string pageId,
+            string pageAccessToken)
+        {
+            if (string.IsNullOrWhiteSpace(pageId)) { throw new ArgumentNullException(nameof(pageId)); }
+            if (string.IsNullOrWhiteSpace(pageAccessToken)) { throw new ArgumentNullException(nameof(pageAccessToken)); }
+            if (string.IsNullOrWhiteSpace(fields)) { throw new ArgumentNullException(nameof(fields)); }
+
+            IDictionary<string, string> args = new Dictionary<string, string>
+            {
+                { "fields", fields }
+            };
+
+            var response = await _facebookHttpClient.GetContentAsync<Content<PageInfos>>(
+                pageAccessToken,
+                string.Format("{0}",
                 pageId),
                 args);
 
