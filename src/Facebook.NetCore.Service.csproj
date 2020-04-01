@@ -8,10 +8,14 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://www.github.com/pedro-de-rycker/Facebook.NetCore.Service</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-    <PackageIcon>nuget-package-logo.png</PackageIcon>
+    <PackageIcon>logo.png</PackageIcon>
     <PackageIconUrl />
     <Description>A API service to use Facebook Graph API.</Description>
     <Version>0.1.2</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>Facebook.NetCore.Service.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\Assets\nuget-package-logo.png">
+    <None Include="Assets/logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
