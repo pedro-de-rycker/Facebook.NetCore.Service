@@ -1,4 +1,5 @@
-﻿using Facebook.NetCore.Client;
+﻿using Facebook.NetCore.HttpClient;
+using Facebook.NetCore.Service.ExtensionMethods;
 using Facebook.NetCore.Service.Models;
 using System;
 using System.Collections.Generic;
@@ -7,18 +8,38 @@ using System.Threading.Tasks;
 
 namespace Facebook.NetCore.Service.Services.PageService
 {
+    /// <summary>
+    /// The Page service.
+    /// </summary>
+    /// 
+
     public class PageService : IPageService
     {
         private readonly IFacebookService _facebookService;
-        private readonly IFacebookHttpClient _facebookHttpClient;
+        private readonly FacebookHttpClient _facebookHttpClient;
+
+        /// <summary>
+        /// The page service constructor.
+        /// </summary>
+        /// <param name="facebookService">The required IFacebookService.</param>
+        /// <param name="facebookHttpClient">The required FacebookHttpClient.</param>
+        /// 
 
         public PageService(
             IFacebookService facebookService,
-            IFacebookHttpClient facebookHttpClient)
+            FacebookHttpClient facebookHttpClient)
         {
             _facebookService = facebookService;
             _facebookHttpClient = facebookHttpClient;
         }
+
+        /// <summary>
+        /// Get the pages where user has a role.
+        /// </summary>
+        /// <param name="userId">The user id.</param>
+        /// <param name="userAccessToken">The user access token.</param>
+        /// <returns>Returns a list of pages where the user has a role.</returns>
+        /// 
 
         public async Task<List<Page>> GetUserPagesAsync(string userId, string userAccessToken)
         {
@@ -26,14 +47,23 @@ namespace Facebook.NetCore.Service.Services.PageService
             if(string.IsNullOrWhiteSpace(userAccessToken)) { throw new ArgumentNullException(nameof(userAccessToken)); }
 
             var response = await _facebookHttpClient.GetContentAsync<ListContent<Page>>(
-                userAccessToken,
-                string.Format("{0}/accounts",
-                userId));
+                string.Format("{0}/accounts", userId),
+                userAccessToken);
 
             return response.Content.Data;
         }
 
-        public async Task<List<Metric>> GetPageInsights(
+        /// <summary>
+        /// Get insights for a specific page.
+        /// </summary>
+        /// <param name="pageId">The page id.</param>
+        /// <param name="pageAccessToken">The page access token.</param>
+        /// <param name="metrics">The metrics to request.</param>
+        /// <param name="period">The period to request.</param>
+        /// <returns>Returns the list of page insights.</returns>
+        /// 
+
+        public async Task<List<Metric>> GetPageInsightsAsync(
             string pageId,
             string pageAccessToken,
             string metrics,
@@ -51,15 +81,23 @@ namespace Facebook.NetCore.Service.Services.PageService
             };
 
             var response = await _facebookHttpClient.GetContentAsync<ListContent<Metric>>(
+                string.Format("{0}/insights", pageId),
                 pageAccessToken,
-                string.Format("{0}/insights",
-                pageId),
                 args);
 
             return response.Content.Data;
         }
 
-        public async Task<PageInfos> GetPageInformation(
+        /// <summary>
+        /// Get information about a specific page.
+        /// </summary>
+        /// <param name="fields">The information fields to request.</param>
+        /// <param name="pageId">The page id.</param>
+        /// <param name="pageAccessToken">The page access token.</param>
+        /// <returns>Returns the page informations</returns>
+        /// 
+
+        public async Task<PageInformations> GetPageInformationAsync(
             string fields,
             string pageId,
             string pageAccessToken)
@@ -73,10 +111,9 @@ namespace Facebook.NetCore.Service.Services.PageService
                 { "fields", fields }
             };
 
-            var response = await _facebookHttpClient.GetContentAsync<Content<PageInfos>>(
+            var response = await _facebookHttpClient.GetContentAsync<Content<PageInformations>>(
+                string.Format("{0}", pageId),
                 pageAccessToken,
-                string.Format("{0}",
-                pageId),
                 args);
 
             return response.Content.Data;

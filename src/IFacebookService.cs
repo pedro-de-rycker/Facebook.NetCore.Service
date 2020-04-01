@@ -6,8 +6,19 @@ using System.Threading.Tasks;
 
 namespace Facebook.NetCore.Service
 {
+    /// <summary>
+    /// The Central service for the graph API interface.
+    /// </summary>
+    /// 
+
     public interface IFacebookService
     {
+        /// <summary>
+        /// Get the application token.
+        /// </summary>
+        /// <returns>Returns the application token object.</returns>
+        /// 
+
         Task<Token> GetApplicationTokenAsync();
     }
 }

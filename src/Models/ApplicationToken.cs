@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace Facebook.NetCore.Service.Models
 {
-    public class ApplicationToken
+    internal class ApplicationToken
     {
         [JsonPropertyName("access_token")]
         public string AccessToken { get; set; }

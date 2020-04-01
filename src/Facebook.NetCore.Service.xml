@@ -4,5 +4,485 @@
         <name>Facebook.NetCore.Service</name>
     </assembly>
     <members>
+        <member name="T:Facebook.NetCore.Service.Enums.TokenType">
+            <summary>
+            Token type of the Facebook graph API
+            </summary>
+            
+        </member>
+        <member name="F:Facebook.NetCore.Service.Enums.TokenType.Application">
+            <summary>
+            Application token
+            </summary>
+        </member>
+        <member name="F:Facebook.NetCore.Service.Enums.TokenType.User">
+            <summary>
+            User token
+            </summary>
+        </member>
+        <member name="F:Facebook.NetCore.Service.Enums.TokenType.Page">
+            <summary>
+            Page token
+            </summary>
+        </member>
+        <member name="T:Facebook.NetCore.Service.ExtensionMethods.FacebookHttpClientExtensionMethods">
+            <summary>
+            Extension methods for the Facebook HttpClient
+            </summary>
+            
+        </member>
+        <member name="M:Facebook.NetCore.Service.ExtensionMethods.FacebookHttpClientExtensionMethods.GetContentAsync``1(Facebook.NetCore.HttpClient.FacebookHttpClient,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Get method to have content already desarialized.
+            </summary>
+            <typeparam name="T">The return type for the response content.</typeparam>
+            <param name="client">The source Facebook HttpClient.</param>
+            <param name="endpoint">The endpoint to request on the Facebook graph API.</param>
+            <param name="accessToken">The access token.</param>
+            <param name="args">The arguments to pass to the request to the Facebook graph API.</param>
+            <returns>The task object representing the asynchronous operation.</returns>
+            
+        </member>
+        <member name="T:Facebook.NetCore.Service.FacebookService">
+            <summary>
+            The Central service for the graph API.
+            </summary>
+            
+        </member>
+        <member name="M:Facebook.NetCore.Service.FacebookService.#ctor(System.String,System.String)">
+            <summary>
+            The constructor for the central service of the Facebook graph API.
+            </summary>
+            <param name="appId">Your application Id.</param>
+            <param name="secretId">Your application secret.</param>
+            
+        </member>
+        <member name="M:Facebook.NetCore.Service.FacebookService.GetApplicationTokenAsync">
+            <summary>
+            Get the application token.
+            </summary>
+            <returns>Returns the application token object.</returns>
+            
+        </member>
+        <member name="T:Facebook.NetCore.Service.IFacebookService">
+            <summary>
+            The Central service for the graph API interface.
+            </summary>
+            
+        </member>
+        <member name="M:Facebook.NetCore.Service.IFacebookService.GetApplicationTokenAsync">
+            <summary>
+            Get the application token.
+            </summary>
+            <returns>Returns the application token object.</returns>
+            
+        </member>
+        <member name="T:Facebook.NetCore.Service.Models.Category">
+            <summary>
+            The category class.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Category.Id">
+            <summary>
+            The id of the category.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Category.Name">
+            <summary>
+            The name of the category.
+            </summary>
+            
+        </member>
+        <member name="T:Facebook.NetCore.Service.Models.ListContent`1">
+            <summary>
+            The content list class.
+            </summary>
+            <typeparam name="T">The data type to be casted.</typeparam>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.ListContent`1.Data">
+            <summary>
+            The data returned by the Facebook graph API.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.ListContent`1.Paging">
+            <summary>
+            The paging of the content.
+            </summary>
+            
+        </member>
+        <member name="T:Facebook.NetCore.Service.Models.Content`1">
+            <summary>
+            The content class.
+            </summary>
+            <typeparam name="T">The data type to be casted.</typeparam>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Content`1.Data">
+            <summary>
+            The data returned by the Facebook graph API.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Content`1.Paging">
+            <summary>
+            The paging of the content.
+            </summary>
+            
+        </member>
+        <member name="T:Facebook.NetCore.Service.Models.Paging">
+            <summary>
+            The paging class.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Paging.Cursors">
+            <summary>
+            The paging cursors.
+            </summary>
+            
+        </member>
+        <member name="T:Facebook.NetCore.Service.Models.Cursors">
+            <summary>
+            The cursors class.
+            </summary>
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Cursors.Before">
+            <summary>
+            The before cursor.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Cursors.After">
+            <summary>
+            The after cursor.
+            </summary>
+            
+        </member>
+        <member name="T:Facebook.NetCore.Service.Models.FacebookHttpResponseMessage`1">
+            <summary>
+            The Facebook HttpResponseMessage class.
+            </summary>
+            <typeparam name="T">The desired content response cast.</typeparam>
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.FacebookHttpResponseMessage`1.Content">
+            <summary>
+            The contente of the response.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.FacebookHttpResponseMessage`1.Headers">
+            <summary>
+            Gets the collection of HTTP response headers.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.FacebookHttpResponseMessage`1.TrailingHeaders">
+            <summary>
+            Gets the collection of trailing headers included in an HTTP response.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.FacebookHttpResponseMessage`1.IsSuccessStatusCode">
+            <summary>
+            Gets a value that indicates if the HTTP response was successful.
+            </summary>
+            
+        </member>
+        <member name="M:Facebook.NetCore.Service.Models.FacebookHttpResponseMessage`1.#ctor(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Facebook HttpResponseMessage
+            </summary>
+            <param name="message">The HttpResponseMessage to cast.</param>
+            
+        </member>
+        <member name="T:Facebook.NetCore.Service.Models.Location">
+            <summary>
+            The location class.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Location.City">
+            <summary>
+            The city location.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Location.Country">
+            <summary>
+            The country location.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Location.Latitude">
+            <summary>
+            The latitude location.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Location.LocatedIn">
+            <summary>
+            The location parent.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Location.Longitude">
+            <summary>
+            The longitude location.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Location.Zip">
+            <summary>
+            The zip of the location.
+            </summary>
+            
+        </member>
+        <member name="T:Facebook.NetCore.Service.Models.Metric">
+            <summary>
+            The metric class.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Metric.Name">
+            <summary>
+            The name of the metric.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Metric.Period">
+            <summary>
+            The period on which the metric stands.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Metric.Values">
+            <summary>
+            The metric values.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Metric.Title">
+            <summary>
+            The title of the metric.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Metric.Description">
+            <summary>
+            The description of the metric.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Metric.Id">
+            <summary>
+            The id of the metric.
+            </summary>
+            
+        </member>
+        <member name="T:Facebook.NetCore.Service.Models.Value">
+            <summary>
+            The value class.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Value.InsightValue">
+            <summary>
+            The value of the metric.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Value.EndTime">
+            <summary>
+            The end time of the value of the metric.
+            </summary>
+            
+        </member>
+        <member name="T:Facebook.NetCore.Service.Models.Page">
+            <summary>
+            The page class.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Page.AccessToken">
+            <summary>
+            The accessToken of a Facebook page.
+            It is linked to a user.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Page.Category">
+            <summary>
+            The category of a Facebook page.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Page.CategoryList">
+            <summary>
+            The categories of a Facebook page.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Page.Name">
+            <summary>
+            The name of a Facebook page.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Page.Id">
+            <summary>
+            The Facebook page id.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Page.Tasks">
+            <summary>
+            The tasks of a Facebook page.
+            </summary>
+            
+        </member>
+        <member name="T:Facebook.NetCore.Service.Models.PageInformations">
+            <summary>
+            The page informations class.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.PageInformations.About">
+            <summary>
+            The about section of a Facebook page.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.PageInformations.Location">
+            <summary>
+            The location of a Facebook page.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.PageInformations.Emails">
+            <summary>
+            The emails linked to a Facebook page.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.PageInformations.Website">
+            <summary>
+            The about website linked to a Facebook page.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.PageInformations.Id">
+            <summary>
+            The Facebook page id.
+            </summary>
+            
+        </member>
+        <member name="T:Facebook.NetCore.Service.Models.Token">
+            <summary>
+            The token class
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Token.Type">
+            <summary>
+            Token type
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Token.Value">
+            <summary>
+            The token value. The token itself.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Token.Expiration">
+            <summary>
+            The token expiration date. Can be null.
+            </summary>
+            
+        </member>
+        <member name="T:Facebook.NetCore.Service.Services.PageService.IPageService">
+            <summary>
+            The Page service.
+            </summary>
+            
+        </member>
+        <member name="M:Facebook.NetCore.Service.Services.PageService.IPageService.GetUserPagesAsync(System.String,System.String)">
+            <summary>
+            Get the pages where user has a role.
+            </summary>
+            <param name="userId">The user id.</param>
+            <param name="userAccessToken">The user access token.</param>
+            <returns>Returns a list of pages where the user has a role.</returns>
+            
+        </member>
+        <member name="M:Facebook.NetCore.Service.Services.PageService.IPageService.GetPageInsightsAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Get insights for a specific page.
+            </summary>
+            <param name="pageId">The page id.</param>
+            <param name="pageAccessToken">The page access token.</param>
+            <param name="metrics">The metrics to request.</param>
+            <param name="period">The period to request.</param>
+            <returns>Returns the list of page insights.</returns>
+            
+        </member>
+        <member name="M:Facebook.NetCore.Service.Services.PageService.IPageService.GetPageInformationAsync(System.String,System.String,System.String)">
+            <summary>
+            Get information about a specific page.
+            </summary>
+            <param name="fields">The information fields to request.</param>
+            <param name="pageId">The page id.</param>
+            <param name="pageAccessToken">The page access token.</param>
+            <returns>Returns the page informations</returns>
+            
+        </member>
+        <member name="T:Facebook.NetCore.Service.Services.PageService.PageService">
+            <summary>
+            The Page service.
+            </summary>
+            
+        </member>
+        <member name="M:Facebook.NetCore.Service.Services.PageService.PageService.#ctor(Facebook.NetCore.Service.IFacebookService,Facebook.NetCore.HttpClient.FacebookHttpClient)">
+            <summary>
+            The page service constructor.
+            </summary>
+            <param name="facebookService">The required IFacebookService.</param>
+            <param name="facebookHttpClient">The required FacebookHttpClient.</param>
+            
+        </member>
+        <member name="M:Facebook.NetCore.Service.Services.PageService.PageService.GetUserPagesAsync(System.String,System.String)">
+            <summary>
+            Get the pages where user has a role.
+            </summary>
+            <param name="userId">The user id.</param>
+            <param name="userAccessToken">The user access token.</param>
+            <returns>Returns a list of pages where the user has a role.</returns>
+            
+        </member>
+        <member name="M:Facebook.NetCore.Service.Services.PageService.PageService.GetPageInsightsAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Get insights for a specific page.
+            </summary>
+            <param name="pageId">The page id.</param>
+            <param name="pageAccessToken">The page access token.</param>
+            <param name="metrics">The metrics to request.</param>
+            <param name="period">The period to request.</param>
+            <returns>Returns the list of page insights.</returns>
+            
+        </member>
+        <member name="M:Facebook.NetCore.Service.Services.PageService.PageService.GetPageInformationAsync(System.String,System.String,System.String)">
+            <summary>
+            Get information about a specific page.
+            </summary>
+            <param name="fields">The information fields to request.</param>
+            <param name="pageId">The page id.</param>
+            <param name="pageAccessToken">The page access token.</param>
+            <returns>Returns the page informations</returns>
+            
+        </member>
     </members>
 </doc>
