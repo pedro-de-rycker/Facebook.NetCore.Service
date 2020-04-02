@@ -11,7 +11,8 @@
     <PackageIcon>logo.png</PackageIcon>
     <PackageIconUrl />
     <Description>API services to use the Facebook Graph API.</Description>
-    <Version>0.1.4</Version>
+    <Version>0.1.0</Version>
+    <PackageTags>facebook api client pages</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
