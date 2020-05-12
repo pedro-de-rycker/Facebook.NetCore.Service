@@ -89,6 +89,38 @@ namespace Facebook.NetCore.Service.Services.PageService
         }
 
         /// <summary>
+        /// Get published post for a specific page.
+        /// </summary>
+        /// <param name="pageId">The page id.</param>
+        /// <param name="pageAccessToken">The page access token.</param>
+        /// <param name="metrics">The metrics to request.</param>
+        /// <param name="period">The period to request.</param>
+        /// <returns>Returns the list of page insights.</returns>
+        /// 
+
+        public async Task<List<Post>> GetPagePublishedPostAsync(
+            string pageId,
+            string pageAccessToken,
+            DateTime? startDateTime = null,
+            DateTime? endDateTime = null)
+        {
+            if (string.IsNullOrWhiteSpace(pageId)) { throw new ArgumentNullException(nameof(pageId)); }
+            if (string.IsNullOrWhiteSpace(pageAccessToken)) { throw new ArgumentNullException(nameof(pageAccessToken)); }
+
+            IDictionary<string, string> args = new Dictionary<string, string>();
+
+            if(startDateTime != null && startDateTime.HasValue) { args.Add("since", startDateTime.Value.ToString()); }
+            if(startDateTime != null && startDateTime.HasValue) { args.Add("until", endDateTime.Value.ToString()); }
+
+            var response = await _facebookHttpClient.GetContentAsync<ListContent<Post>>(
+                string.Format("{0}/published_posts", pageId),
+                pageAccessToken,
+                args);
+
+            return response.Content.Data;
+        }
+
+        /// <summary>
         /// Get information about a specific page.
         /// </summary>
         /// <param name="fields">The information fields to request.</param>

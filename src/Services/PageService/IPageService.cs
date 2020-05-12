@@ -39,6 +39,23 @@ namespace Facebook.NetCore.Service.Services.PageService
             string metrics,
             string period);
 
+
+        /// <summary>
+        /// Get published post for a specific page.
+        /// </summary>
+        /// <param name="pageId">The page id.</param>
+        /// <param name="pageAccessToken">The page access token.</param>
+        /// <param name="metrics">The metrics to request.</param>
+        /// <param name="period">The period to request.</param>
+        /// <returns>Returns the list of page insights.</returns>
+        /// 
+
+        Task<List<Post>> GetPagePublishedPostAsync(
+            string pageId,
+            string pageAccessToken,
+            DateTime? startDateTime = null,
+            DateTime? endDateTime = null);
+
         /// <summary>
         /// Get information about a specific page.
         /// </summary>
@@ -49,8 +66,8 @@ namespace Facebook.NetCore.Service.Services.PageService
         /// 
 
         Task<PageInformations> GetPageInformationAsync(
-            string fields,
-            string pageId,
-            string pageAccessToken);
+        string fields,
+        string pageId,
+        string pageAccessToken);
     }
 }

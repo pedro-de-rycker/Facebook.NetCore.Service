@@ -380,6 +380,36 @@
             </summary>
             
         </member>
+        <member name="T:Facebook.NetCore.Service.Models.Post">
+            <summary>
+            The post class
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Post.Id">
+            <summary>
+            The post id.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Post.CreatedTime">
+            <summary>
+            The post creation time.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Post.Message">
+            <summary>
+            The post message.
+            </summary>
+            
+        </member>
+        <member name="P:Facebook.NetCore.Service.Models.Post.Story">
+            <summary>
+            The post story.
+            </summary>
+            
+        </member>
         <member name="T:Facebook.NetCore.Service.Models.Token">
             <summary>
             The token class
@@ -430,6 +460,17 @@
             <returns>Returns the list of page insights.</returns>
             
         </member>
+        <member name="M:Facebook.NetCore.Service.Services.PageService.IPageService.GetPagePublishedPostAsync(System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Get published post for a specific page.
+            </summary>
+            <param name="pageId">The page id.</param>
+            <param name="pageAccessToken">The page access token.</param>
+            <param name="metrics">The metrics to request.</param>
+            <param name="period">The period to request.</param>
+            <returns>Returns the list of page insights.</returns>
+            
+        </member>
         <member name="M:Facebook.NetCore.Service.Services.PageService.IPageService.GetPageInformationAsync(System.String,System.String,System.String)">
             <summary>
             Get information about a specific page.
@@ -466,6 +507,17 @@
         <member name="M:Facebook.NetCore.Service.Services.PageService.PageService.GetPageInsightsAsync(System.String,System.String,System.String,System.String)">
             <summary>
             Get insights for a specific page.
+            </summary>
+            <param name="pageId">The page id.</param>
+            <param name="pageAccessToken">The page access token.</param>
+            <param name="metrics">The metrics to request.</param>
+            <param name="period">The period to request.</param>
+            <returns>Returns the list of page insights.</returns>
+            
+        </member>
+        <member name="M:Facebook.NetCore.Service.Services.PageService.PageService.GetPagePublishedPostAsync(System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Get published post for a specific page.
             </summary>
             <param name="pageId">The page id.</param>
             <param name="pageAccessToken">The page access token.</param>
