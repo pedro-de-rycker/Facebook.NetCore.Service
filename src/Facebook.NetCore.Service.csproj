@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Facebook.NetCore.HttpClient" Version="0.1.4" />
+    <ProjectReference Include="..\..\Facebook.NetCore.HttpClient\src\Facebook.NetCore.HttpClient.csproj" />
   </ItemGroup>
 
 </Project>
