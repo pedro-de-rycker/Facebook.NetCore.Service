@@ -117,7 +117,7 @@ namespace Facebook.NetCore.Service.Services.PageService
                 pageAccessToken,
                 args);
 
-            return response.Content.Data;
+            return response.Content?.Data;
         }
 
         /// <summary>
