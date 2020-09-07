@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Facebook.NetCore.Service.JsonConverters;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -74,7 +75,8 @@ namespace Facebook.NetCore.Service.Models
         /// 
 
         [JsonPropertyName("value")]
-        public long InsightValue { get; set; }
+        [JsonConverter(typeof(DictionnaryJsonConverter))]
+        public Dictionary<string, int> InsightValue { get; set; }
 
         /// <summary>
         /// The end time of the value of the metric.
